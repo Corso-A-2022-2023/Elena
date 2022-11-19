@@ -1,5 +1,5 @@
-# Primo Anno - primo semestre
-## Benvenuti nella mia repo personale A a.a 2022-2023 :sparkling_heart:
+# Primo Anno - primo semestre a.a 2022-2023
+## Benvenuti nella mia repo personale :sparkling_heart:
 
 Pubblicherò tutto il mio materiale: appunti, programmi, esercizi etc.
 
