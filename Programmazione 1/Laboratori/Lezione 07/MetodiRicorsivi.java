@@ -10,13 +10,14 @@ public class MetodiRicorsivi {
      *  Quando l'utente inserisce valore nullo, la ricorsione
      *  si ferma e ritorna la somma calcolata fin ora.
      */
-    public static int sommatoriaRicorsiva(int a) {
+    public static int sommatoriaRicorsiva() {
         System.out.print("Inserire un numero: ");
         Scanner sc = new Scanner(System.in);
-        int b = sc.nextInt();
-        if(b==0)
-            return a;
-        return sommatoriaRicorsiva (a + b);
+        int n = sc.nextInt();
+        if(n == 0)
+            return 0;
+        else 
+            return n + sommatoriaRicorsiva ();
     }
 
     /*  ESERCIZIO 2
@@ -32,12 +33,16 @@ public class MetodiRicorsivi {
     }
 
     public static boolean trovaCarattereRic(String s, char c, int i) {
-        if (s.charAt(i) == c)
-            return true;
-        if (i == s.length()-1)
+        if (i == s.length())
             return false;
-        return trovaCarattereRic(s, c, i+1);
-    }
+        else {
+            if (s.charAt(i) == c)
+                return true;
+            else
+                return trovaCarattereRic(s, c, i+1);
+        }
+    }      
+        
 
     /*  ESERCIZIO 2
      *  prende in input una stringa ed un carattere, e ritorna 
@@ -54,14 +59,15 @@ public class MetodiRicorsivi {
     }
 
     public static int contaCaratteriRic(String s, char c, int i) {
-        if (s.charAt(i) == c) {
-            if (i == s.length()-1)
-                return 1;
-            return 1 + contaCaratteriRic(s, c, i+1);
+        if(i == s.length())
+            return 0;
+        else{
+            if (s.charAt(i) == c) 
+                return 1 + contaCaratteriRic(s, c, i+1);
+            else
+                return contaCaratteriRic(s, c, i+1);
         }
-        if (i == s.length()-1)
-                return 0;
-        return contaCaratteriRic(s, c, i+1);
+        
     }
 
     /*  ESERCIZIO 3
@@ -97,12 +103,12 @@ public class MetodiRicorsivi {
             return "";
         // se è una vocale stampo *
         if(in.charAt(i)=='a' || in.charAt(i)=='e' || in.charAt(i)=='i' || in.charAt(i)=='o' || in.charAt(i)=='u' || in.charAt(i)=='A' || in.charAt(i)=='E' || in.charAt(i)=='I' || in.charAt(i)=='O' || in.charAt(i)=='U')
-            return conversioneCaratteriR(in, i-1).concat("*");
+            return conversioneCaratteriR(in, i-1) + "*";
         // se non è una vocale ma comunque una lettera dell'alfabeto stampo $
         else if((in.charAt(i)>'A' && in.charAt(i)<='Z') || (in.charAt(i)>'a' && in.charAt(i)<='z'))
-            return conversioneCaratteriR(in, i-1).concat("$");
+            return conversioneCaratteriR(in, i-1) + "$";
         // altrimenti stampo -
-        return conversioneCaratteriR(in, i-1).concat("-");
+        return conversioneCaratteriR(in, i-1) + "-";
     }
 
     /*  ESERCIZIO 5
@@ -114,10 +120,10 @@ public class MetodiRicorsivi {
     }
 
     public static String stringaInversaR(String in, int i) {
-        if(i == in.length() - 1)
-            return "".concat(in.substring(i, i+1));
+        if(i == in.length())
+            return "";
             // stringa.concat(...) concatena due stringhe per renderle una
-        return stringaInversaR(in, i+1).concat(in.substring(i, i+1));
+        return stringaInversaR(in, i+1) + in.charAt(i);
     }
 
     /*  ESERCIZIO 6 (ammetto di aver avuto molta difficoltà ed essermi aiutata con le soluzioni)*/
@@ -131,10 +137,12 @@ public class MetodiRicorsivi {
     public static String eliminaCarattereR(String s, int pos, int i) {
         if(i==s.length())
             return "";
-        if(i == pos)
-            return eliminaCarattereR(s, pos, i+1);
-        else
-            return s.charAt(i) + eliminaCarattereR(s, pos, i+1);
+        else {
+            if(i == pos)
+                return eliminaCarattereR(s, pos, i+1);
+            else
+                return s.charAt(i) + eliminaCarattereR(s, pos, i+1);
+        }
     }
 
     // all'inizio s è la stringa intera e s_perm è una stringa vuota (sarà la permutazione)
