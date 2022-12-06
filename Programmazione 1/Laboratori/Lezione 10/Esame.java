@@ -18,6 +18,28 @@ public class Esame {
 	 * L'aggiunta del metodo e1 deve mantenere compilabile la classe.
 	 */
     
+	public static boolean e1(int[] a, int[] b){
+		boolean ogni = true;
+		
+		if(a == null || b == null)
+			ogni = !ogni;
+		else{
+			for(int i=0; i<a.length && ogni; i++){
+				int cnt = 0;
+				//boolean trovato = false;
+				//boolean trovati = false;
+				for(int j=i; j<b.length && cnt < 2; j++){
+					//trovato = trovato || (b[j] % a[i] == 0);
+					if(a[i] % b[j] == 0)
+						cnt++;
+					//trovati = (trovato && b[j+1] % a[i] == 0) || trovati;
+				}
+				ogni = cnt == 2;
+			}
+		}
+		
+		return ogni;
+	}
 
 
 	/*************************************************************************************************/
@@ -45,6 +67,24 @@ public class Esame {
 	 * Il metodo e2 va scritto immediatamente al di fuori di questo commento. 
 	 * L'aggiunta del metodo e2 deve mantenere compilabile la classe.
 	 */
-
+	public static int e2(int[] a) {
+		if(a == null)
+			return 0;
+		else
+			return e2R(a, 0, a.length - 1);
+	}
+	
+	public static int e2R(int[] a, int l, int r){
+		if(l == r){
+			if((t1(a[l]) || t2(a[l])) && !(t1(a[l]) && t2(a[l])))
+				return a[l];
+			else
+				return 0;
+		}
+		else {
+			int m = (l+r)/2;
+			return e2R(a, l, m) + e2R(a, m+1, r);
+		}
+	}
 	
 }

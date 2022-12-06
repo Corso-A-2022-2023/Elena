@@ -180,10 +180,30 @@ class EserciziMatrici{
 			return new int[imat.length][];
 		else{
 			int[][] omat = incrementaRic(imat, i + 1);
-			omat[i] = new int[imat[i].length];
-			incrementaRiga(imat[i], omat[i], imat[i].length - 1);
+			if(imat[i] != null){
+				omat[i] = new int[imat[i].length];
+				incrementaRiga(imat[i], omat[i], imat[i].length - 1);
+			}
 			return omat;
 		}
+	}
+	
+	public static int conteggio(int[] a, int k) {
+		if(a==null)
+			return 0;
+		return conteggioDicotomico(a, k, 0, a.length-1);
+	}
+	
+	public static int conteggioDicotomico(int[] a, int k, int l, int r) {
+		if(r==l){
+			if(a[l] == k)
+				return 1;
+			return 0;
+		}
+		else{
+			int m = (l+r)/2;
+			return conteggioDicotomico(a, k, l, m) + conteggioDicotomico(a, k, m+1, r);
+		}	
 	}
 	
 	public static void main(String[] args) {
@@ -210,9 +230,19 @@ class EserciziMatrici{
 		int[][] m5 = { {1, 5, 10, 7}, {3, 12, 21, 30}, {5, 10, 20, 30} }; // true
 		int[][] m6 = { {4, 7, 2, 5}, {7, 9, 20, 12}, {5, 8, 11, 21} }; // false
 		/*System.out.println(domMat(m5));
-		System.out.println(domMat(m6));*/
+		System.out.println(domMat(m6));
 		System.out.println(toString(m1));
-		System.out.print(toString(incrementa(m1)));
+		System.out.println(toString(incrementa(m1)));
+		System.out.println(toString(m2));
+		System.out.println(toString(incrementa(m2)));
+		System.out.println(toString(m3));
+		System.out.println(toString(incrementa(m3)));
+		System.out.println(toString(m4));
+		System.out.print(toString(incrementa(m4)));*/
+		
+		int[] a4 = { 3, 5, 3, 2, 3, 6, 3, 2, 3, 3, 8, 3};
+		System.out.println(conteggio(a4, 3));
+		System.out.println(conteggio(a4, 2));
 		
 	}
 }
