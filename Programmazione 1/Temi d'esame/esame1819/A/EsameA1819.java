@@ -28,25 +28,19 @@ public class EsameA1819 {
 
     public static boolean e1(int[][] m){
         boolean esiste = false;	// true se esiste riga i che rispetta la condizione
-		boolean maggiore = true;	// true se elemento j maggiore di elemento precedente (j-1)
-		int i = 0, j;
 		
-		if(m == null || m.length==0)
-			return false;
-		
-		do {
-			if(m[i] != null){	// se m[i] è null allora salto tutti i passaggi e cambio riga
-				for(j = i; j < m[i].length && maggiore; j++) {
-					if (i == 0 && j == 0) 
-						j++;	// se siamo nel primo elemento della riga i=0 dobbiamo iniziare a leggere da j=1
-					maggiore = m[i][j] > m[i][j-1];	// se false esco dal for interno e cambio riga
+		if(m != null && m.length > 1){	// devo avere almeno 2 elementi per poter fare il confronto
+			for(int i = 0; i < m.length && !esiste; i++){
+				boolean maggiore = true;
+				if(m[i] != null && m[i].length > 0){
+					for(int j = i; j < m[i].length && maggiore; j++)
+						if(!(i == 0 && j == 0))
+							maggiore = (m[i][j] > m[i][j-1]);
+					
+					esiste = maggiore;
 				}
-				esiste = (j == m[i].length);	// se true esco dal for (mi basta una sola riga che rispetti la condizione)
 			}
-			i++;	// passo alla riga successiva
-		
-		}while(i < m.length && !esiste);
-	
+		}
 		return esiste;
     }
         

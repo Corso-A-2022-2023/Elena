@@ -28,6 +28,33 @@ public class EsameD1819 {
 	 * SCRIVERE la soluzione immediatamente qui sotto.               
 	 */
 		
+	public static boolean e1(int[][] m){
+		boolean ogniRiga = true;	// mi dice se in ogni riga è rispettata la condizione
+		
+		if(m != null && m.length > 1) {
+			// se la matrice è valida (mi serve che abbia almeno due righe, altrimenti
+			// non posso fare il controllo sulla successiva) allora itero su tutte le 
+			// righe tranne l'ultima
+			for(int i = 0; i < m.length - 1 && ogniRiga; i++){
+				boolean esiste = false;	// mi dice se nella riga i-esima esiste l'elemento che rispetti la condizione
+				// se la mia riga è valida, allora eseguo una seconda iterazione sulle colonne
+				if(m[i] != null && m[i].length != 0){
+					for(int j = 0; j < m[i].length && !esiste; j++)
+						// se la riga successiva non esiste, non posso eseguire il controllo
+						if(m[i+1] != null)
+							esiste = m[i][j] < m[i+1][j];
+					ogniRiga = esiste;
+				}
+				else
+					ogniRiga = false;
+			}
+		}
+		else
+			ogniRiga = false;
+		
+		return ogniRiga;
+	}
+		
 	/**
 	 * ESERCIZIO 2 (Massimo 7 punti -- da consegnare elettronicamente).
 	 * Scrivere un metodo involucro (wrapper o guscio) void e2 tale che:
@@ -41,6 +68,29 @@ public class EsameD1819 {
 	 * ammesso che entrambe esistano.
 	 * Scrivere la soluzione immediatamente qui sotto.
 	 */
+	
+	public static void e2(boolean[] a){
+		if(a != null && a.length > 2) // >2 perchè devo avere almeno 3 elementi per poter applicare il metodo
+			e2R(a, 0, a.length-1);
+	}
+	
+	// indice l = left ; indice r = right.
+	public static void e2R(boolean[] a, int l, int r){
+		if(l == r){	// caso base in cui siamo l e r controllano lo stesso elemento
+			if(l % 2 == 1){	// posizione dispari
+				// riscrivo la cella con la congiunzione tra a[l-1] e a[l+1]
+				// se esistono
+				if(l > 0 && l < a.length - 1)
+					a[l] = a[l-1] && a[l+1];
+			}
+		}
+		else{
+			int m = (l+r)/2; // indice di mezzo
+			e2R(a, l, m);	// chiamata dicotomica sul sottovettore sx
+			e2R(a, m+1, r);	// chiamata dicotomica sul sottovettore dx 
+		}
+		
+	}
 	
 	/** ESERCIZIO 3 (Massimo 2 + 2 + 3 + 3 punti -- da consegnare a mano)	 
 	 * Sia P(n) il seguente predicato:
