@@ -17,6 +17,25 @@ public class EsameC1819 {
 	 * SCRIVERE la soluzione immediatamente qui sotto.               
 	 */
 	 
+	public static int e1(int[] a, int[][] m){
+		int somma = 0;
+		
+		if(a != null && a.length > 0 && m != null && m.length > 0){
+			for(int i = 0; i < a.length; i++){
+				boolean trovato = false;	// true se esiste elemento di m maggiore di a[i]
+				for(int j = 0; j < m.length && !trovato; j++){
+					if(m[j] != null && m[j].length > 0)
+						for(int k = 0; k < m[j].length && !trovato; k++)
+							trovato = m[j][k] > a[i];
+				}
+				if(trovato)
+					somma += a[i];
+			}
+		}
+		
+		return somma;
+	}
+	 
 	/**
 	 * ESERCIZIO 2 (Massimo 7 punti -- da consegnare elettronicamente).
 	 * Scrivere un metodo involucro (wrapper o guscio) void e2 tale che:
@@ -26,6 +45,19 @@ public class EsameC1819 {
 		e2R diminuisce nella chiamata ricorsiva) con le seguenti caratteristiche:
 	 * --) e2R ricopre ogni a[i] con il contenuto della cella precedente se i e' dispari.
 	 * Scrivere la soluzione immediatamente qui sotto.                   */
+	
+	public static void e2(int[] a){
+		if(a != null && a.length > 1)	// per poter fare controllo col precedente, devo avere almeno 2 elementi
+			e2R(a, a.length - 1);
+	}
+	
+	public static void e2R(int[] a, int i){
+		if(i >= 0){
+			if(i % 2 == 1)
+				a[i] = a[i - 1];
+			e2R(a, i-1);
+		}
+	}
 	
 	/** ESERCIZIO 3 (Massimo 2 + 2 + 3 + 3 punti -- da consegnare a mano)	 
 	 * Sia P(n) il seguente predicato:
