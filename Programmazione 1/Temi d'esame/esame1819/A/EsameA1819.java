@@ -98,20 +98,21 @@ public class EsameA1819 {
 	*					ovvero quando inizialmente c = s = i = 0
 	*					voglio dimostrare che s' == 0 + a[0]
 	*					
-	2)	Passo induttivo: suppongo che valga P(i) per qualche i>0
-	*					 ovvero P(i): s == 0 + s[0] + ... + s[c - 1]
-	*					 all'(i+1)-esimo passo:
-	*						voglio dimostrare che s' == 0 + a[0] + ... + a[c' - 1]
+	2)	Passo induttivo: suppongo che valga P(i-1) per qualche i>0
+	*					 ovvero P(i-1): s == 0 + s[0] + ... + s[i - 1]
+	*					 all'i-esimo passo:
+	*						voglio dimostrare che s' == 0 + a[0] + ... + a[i]
 	*
 	*
 	3)  predicato 1:	c' = 0 + 1 = 1
 	*					s' = s + a[c' - 1] = 0 + a[1-1] = 0 + a[0]		è vero
 	*					
 	4)	predicato 2:	c" = c + 1
-	*					s" = s + a[c" - 1] =	MA vale l'hp induttiva P(i)
+	*					s" = s + a[c" - 1] =	come da codice
+	*						 MA vale l'hp induttiva P(i-1) quindi sostituendo s ottengo
 	*					   = 0 + a[0] + ... + s[c - 1] + a[c" - 1] =	
 	*					   = 0 + a[0] + ... + s[c - 1] + a[c + 1 - 1] = 
-	*					   = 0 + a[0] + ... + a [c] + a[c - 1]		è vero
+	*					   = 0 + a[0] + ... + a[c - 1] + a[c]			è vero
 	*						
 	*/
 

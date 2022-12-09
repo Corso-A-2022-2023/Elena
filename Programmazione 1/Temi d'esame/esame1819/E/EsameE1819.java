@@ -28,6 +28,27 @@ public class EsameE1819 {
 	 * 
 	 * SCRIVERE la soluzione immediatamente qui sotto.               
 	 */
+	 
+	public static boolean e1(int[][] m, int[] a){
+		boolean ogniElemento = true;
+		
+		if(m == null || m.length == 0 || a == null || a.length == 0)
+			ogniElemento = false;
+		else{
+			for(int i = 0; i < m.length && ogniElemento; i++){
+				boolean maggiore = false;
+				if(m[i] != null && m[i].length > 0){
+					if(m[i].length > i)
+						for(int k = 0; k < a.length && !maggiore; k++)
+							maggiore = a[k] > m[i][i];
+					else
+						maggiore = true;
+				}
+				ogniElemento = maggiore;
+			}
+		}
+		return ogniElemento;
+	}
 	
 	/**
 	 * ESERCIZIO 2 (Massimo 7 punti -- da consegnare elettronicamente).
@@ -40,7 +61,22 @@ public class EsameE1819 {
 	 *   
 	 * SCRIVERE la soluzione immediatamente qui sotto.               
 	 */
+	 
+	public static boolean e2(int[] a, int f, int d){
+		boolean ris = true;
+		if(a != null && a.length > 0 && f >= 0 && d > 0)
+			ris = e2R(a, 0, f, d);
+		return ris;
+	}
 
+	public static boolean e2R(int[] a, int i, int f, int d){
+		if(i == f)
+			return true;
+		else{
+			return !(a[i] % d == 0) && e2R(a, i+1, f, d);
+		}
+	}
+	
 	/** ESERCIZIO 3 (Massimo 2 + 2 + 3 + 3 punti -- da consegnare a mano)	 
 	 * Sia P(n) il seguente predicato:
 	 *        e3(n) == #{d | 0<= d <=n && d dispari} .
