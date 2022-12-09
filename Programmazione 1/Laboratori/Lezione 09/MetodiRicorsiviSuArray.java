@@ -48,11 +48,15 @@ public class MetodiRicorsiviSuArray {
 	public static int indiceMassimoDic(int[] a, int i, int j){
 		if(i == j) 
 			return j;
-		int m = (i+j)/2;
-		if(a[i] < a[m])
-			return indiceMassimoDic(a, i, m);
-		else 
-			return indiceMassimoDic(a, m+1, j);
+		else{
+			int m = (i+j)/2;
+			int maxSx = indiceMassimoDic(a, i, m);
+			int maxDx = indiceMassimoDic(a, m+1, j);
+			if(a[maxSx] < a[maxDx])
+				return maxSx;
+			else 
+				return maxDx;
+		}
 	}
 	
 	public static int[] filtraMaggioriDi(int[] a, int limiteInferiore){
