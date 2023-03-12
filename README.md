@@ -1,4 +1,4 @@
-# Primo Anno - primo semestre a.a 2022-2023
+# Primo Anno - primo semestre e secondo semestre a.a 2022-2023
 ## Benvenuti nella mia repo personale :sparkling_heart:
 
 Pubblicherò tutto il mio materiale: appunti, programmi, esercizi etc.
