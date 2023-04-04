@@ -1,5 +1,5 @@
 # Primo Anno - a.a. 2022-2023
-## Benvenuti nella mia repo personale :sparkling_heart:
+### Benvenuti nella mia repo personale :sparkling_heart:
 
 Pubblicherò tutto il mio materiale: appunti, programmi, esercizi etc.
 
