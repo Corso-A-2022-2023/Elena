@@ -12,4 +12,4 @@ Ogni file sarà commentabile in caso di dubbi e/o correzioni.
 - [Matematica discreta](https://github.com/Corso-A-2022-2023/Elena/tree/main/Matematica%20Discreta)
 - [Calcolo matriciale e ricerca operativa](https://github.com/Corso-A-2022-2023/Elena/tree/main/CalcoloMatriciale_RicercaOperativa)
 ### Secondo semestre
-- [Architettura degli elaboratori](https://github.com/Corso-A-2022-2023/Elena/tree/main/Architettura%20Degli%20Elaboratori)
+- [Architettura degli elaboratori](https://github.com/Ela17/Primo_Anno/tree/main/Architettura%20Degli%20Elaboratori)
